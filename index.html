@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Drum Kit</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+  <script src="/assets/js/jQuery-3.5.1.min.js"></script>
+</head>
+
+<body>
+
+  <h1 id="title">Drum 🥁 Kit</h1>
+  <div class="set">
+    <audio src="sounds/tom-1.mp3" data-a="w"></audio>
+    <audio src="sounds/tom-2.mp3" data-a="a"></audio>
+    <audio src="sounds/tom-3.mp3" data-a="s"></audio>
+    <audio src="sounds/tom-4.mp3" data-a="d"></audio>
+    <audio src="sounds/crash.mp3" data-a="j"></audio>
+    <audio src="sounds/kick-bass.mp3" data-a="k"></audio>
+    <audio src="sounds/snare.mp3" data-a="l"></audio>
+
+    <button class="j drum" id="j_btn" data-d="j"><img src="images/crash.png" alt="j"></button>
+    <button class="l drum" id="l_btn" data-d="l"><img src="images/snare.png" alt="l"></button>
+    <button class="w drum" id="w_btn" data-d="w"><img src="images/tom1.png" alt="w"></button>
+    <button class="a drum" id="a_btn" data-d="a"><img src="images/tom2.png" alt="a"></button>
+    <button class="s drum" id="s_btn" data-d="s"><img src="images/tom3.png" alt="s"></button>
+    <button class="d drum" id="d_btn" data-d="d"><img src="images/tom4.png" alt="d"></button>
+    <button class="k drum" id="k_btn" data-d="k"><img src="images/kick.png" alt="k"></button>
+  </div>
+
+  <footer>
+    Made with ❤️ in KEMEROVO.
+  </footer>
+</body>
+
+<script>
+  document.addEventListener('keydown', function(e) {
+    let key = e.key;
+    let drum = document.querySelector('[data-d='+key+']');
+    let audio = document.querySelector('[data-a='+key+']');
+
+    drum.classList.add('hit')
+    setTimeout(() => {
+      drum.classList.remove('hit')
+    }, 100);
+    audio.currentTime = 0;
+    audio.play();
+  });
+</script>
+
+</html>
